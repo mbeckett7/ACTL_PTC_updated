@@ -1,0 +1,26 @@
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "LC API",
+    "expression": "grel:forNonBlank(forEach(value.parseXml().select('madsrdf|Source'),y,y.xmlText()),v,v.join('\\n'),'[no linked AUTH]')",
+    "onError": "set-to-blank",
+    "newColumnName": "670s on linked AUTH",
+    "columnInsertIndex": 2,
+    "description": "Create column 670s on linked AUTH at index 2 based on column LC API using expression grel:forNonBlank(forEach(value.parseXml().select('madsrdf|Source'),y,y.xmlText()),v,v.join('\\n'),'[no linked AUTH]')"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "AUTH Originating System ID",
+    "expression": "grel:if(and(startsWith(value,'n'),isNonBlank(value)),'http://www.worldcat.org/identities/lccn-' + value.replace(/\\s/,''),'[no linked LC AUTH]')",
+    "onError": "set-to-blank",
+    "newColumnName": "Worldcat AUTH link",
+    "columnInsertIndex": 1,
+    "description": "Create column Worldcat AUTH link at index 1 based on column AUTH Originating System ID using expression grel:if(and(startsWith(value,'n'),isNonBlank(value)),'http://www.worldcat.org/identities/lccn-' + value.replace(/\\s/,''),'[no linked LC AUTH]')"
+  }
