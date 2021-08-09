@@ -1,0 +1,31 @@
+[
+  {
+    "op": "core/column-addition-by-fetching-urls",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "AUTH Originating System ID",
+    "urlExpression": "grel:if(and(isNonBlank(value),value.contains(/[A-Za-z]/)),'https://id.loc.gov/authorities/names/' + value.replace(/\\s/,'') + '.rdf','')",
+    "onError": "store-error",
+    "newColumnName": "LC API",
+    "columnInsertIndex": 1,
+    "delay": 2000,
+    "cacheResponses": true,
+    "httpHeadersJson": [
+      {
+        "name": "authorization",
+        "value": ""
+      },
+      {
+        "name": "user-agent",
+        "value": "OpenRefine 3.4.1 [437dc4d]"
+      },
+      {
+        "name": "accept",
+        "value": "*/*"
+      }
+    ],
+    "description": "Create column LC API at index 1 by fetching URLs based on column AUTH Originating System ID using expression grel:if(and(isNonBlank(value),value.contains(/[A-Za-z]/)),'https://id.loc.gov/authorities/names/' + value.replace(/\\s/,'') + '.rdf','')"
+  }
+]
