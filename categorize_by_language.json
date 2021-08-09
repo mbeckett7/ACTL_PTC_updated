@@ -1,0 +1,39 @@
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "Language",
+    "expression": "grel:cell.cross('AARGH languages updated','Language code')[0].cells['Language group'].value",
+    "onError": "set-to-blank",
+    "newColumnName": "Language/area group",
+    "columnInsertIndex": 12,
+    "description": "Create column Language/area group at index 12 based on column Language using expression grel:cell.cross('AARGH languages updated','Language code')[0].cells['Language group'].value"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "Language/area group",
+    "expression": "grel:if(and(inArray(['Judaica','Middle East','Slavic','Greek'],value),not(or(isBlank(cells['Holding Libraries'].value),cells['Holding Libraries'].value.contains('Widener'),cells['Holding Libraries'].value.contains('Microforms')))),'non-WID/MIC/MMF Unassigned',value)",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column Language/area group using expression grel:if(and(inArray(['Judaica','Middle East','Slavic','Greek'],value),not(or(isBlank(cells['Holding Libraries'].value),cells['Holding Libraries'].value.contains('Widener'),cells['Holding Libraries'].value.contains('Microforms')))),'non-WID/MIC/MMF Unassigned',value)"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "Language/area group",
+    "expression": "grel:if(and(inArray(['AARGH','Unassigned','Department?',''],value),or(isBlank(cells['Holding Libraries'].value),cells['Holding Libraries'].value.contains('Widener'),cells['Holding Libraries'].value.contains('Microforms')),cells.Country.value=='is'),'Judaica',value)",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column Language/area group using expression grel:if(and(inArray(['AARGH','Unassigned','Department?',''],value),or(isBlank(cells['Holding Libraries'].value),cells['Holding Libraries'].value.contains('Widener'),cells['Holding Libraries'].value.contains('Microforms')),cells.Country.value=='is'),'Judaica',value)"
+  }
