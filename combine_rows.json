@@ -1,0 +1,218 @@
+  {
+    "op": "core/column-reorder",
+    "columnNames": [
+      "AUTH Originating System ID",
+      "BIB Heading Before",
+      "BIB Heading After",
+      "Title",
+      "Publication date",
+      "First Subject",
+      "Language",
+      "Country",
+      "Holding Libraries",
+      "Language/area group",
+      "Field",
+      "Vocabulary",
+      "HeadingType",
+      "QualifiedAfter",
+      "Change Date"
+    ],
+    "description": "Reorder columns"
+  },
+  {
+    "op": "core/row-reorder",
+    "mode": "row-based",
+    "sorting": {
+      "criteria": [
+        {
+          "valueType": "string",
+          "column": "AUTH Originating System ID",
+          "blankPosition": 2,
+          "errorPosition": 1,
+          "reverse": false,
+          "caseSensitive": false
+        }
+      ]
+    },
+    "description": "Reorder rows"
+  },
+  {
+    "op": "core/blank-down",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "AUTH Originating System ID",
+    "description": "Blank down cells in column AUTH Originating System ID"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "record-based"
+    },
+    "columnName": "BIB Heading Before",
+    "expression": "grel:if(row.record.cells['BIB Heading Before'].value.uniques().length()==1,value,if(row.record.cells.Title.length()>99,if(row.record.cells['BIB Heading Before'].value.uniques().length()>99,\"Too many BIB Heading forms to display; please search by AUTH Originating System ID.\",\"BIB Heading forms found:\\n\"+row.record.cells['BIB Heading Before'].value.uniques().join('\\n')) ,row.record.cells['BIB Heading Before'].value.join('\\n')))",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column BIB Heading Before using expression grel:if(row.record.cells['BIB Heading Before'].value.uniques().length()==1,value,if(row.record.cells.Title.length()>99,if(row.record.cells['BIB Heading Before'].value.uniques().length()>99,\"Too many BIB Heading forms to display; please search by AUTH Originating System ID.\",\"BIB Heading forms found:\\n\"+row.record.cells['BIB Heading Before'].value.uniques().join('\\n')) ,row.record.cells['BIB Heading Before'].value.join('\\n')))"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "record-based"
+    },
+    "columnName": "BIB Heading After",
+    "expression": "grel:if(row.record.cells['BIB Heading After'].value.uniques().length()==1,value,if(row.record.cells.Title.length()>99,if(row.record.cells['BIB Heading After'].value.uniques().length()>99,\"Too many BIB Heading forms to display; please search by AUTH Originating System ID.\",\"BIB Heading forms found:\\n\"+row.record.cells['BIB Heading After'].value.uniques().join('\\n')) ,row.record.cells['BIB Heading After'].value.join('\\n')))",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column BIB Heading After using expression grel:if(row.record.cells['BIB Heading After'].value.uniques().length()==1,value,if(row.record.cells.Title.length()>99,if(row.record.cells['BIB Heading After'].value.uniques().length()>99,\"Too many BIB Heading forms to display; please search by AUTH Originating System ID.\",\"BIB Heading forms found:\\n\"+row.record.cells['BIB Heading After'].value.uniques().join('\\n')) ,row.record.cells['BIB Heading After'].value.join('\\n')))"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "record-based"
+    },
+    "columnName": "Title",
+    "expression": "grel:if(row.record.cells.Title.length()>99,\"[Heading appears on \" + row.record.cells.Title.length() + \" titles - too many to display here. Please browse in Alma or Primo.]\",row.record.cells.Title.value.join('\\n'))",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column Title using expression grel:if(row.record.cells.Title.length()>99,\"[Heading appears on \" + row.record.cells.Title.length() + \" titles - too many to display here. Please browse in Alma or Primo.]\",row.record.cells.Title.value.join('\\n'))"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "record-based"
+    },
+    "columnName": "First Subject",
+    "expression": "grel:if(row.record.cells.Title.length()>99,if(row.record.cells['First Subject'].value.uniques().length()>99,\"Too many unique values to display.\",\"All lines not displayed; unique values found:\\n\"+row.record.cells['First Subject'].value.uniques().join('\\n')) ,row.record.cells['First Subject'].value.join('\\n'))",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column First Subject using expression grel:if(row.record.cells.Title.length()>99,if(row.record.cells['First Subject'].value.uniques().length()>99,\"Too many unique values to display.\",\"All lines not displayed; unique values found:\\n\"+row.record.cells['First Subject'].value.uniques().join('\\n')) ,row.record.cells['First Subject'].value.join('\\n'))"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "record-based"
+    },
+    "columnName": "Language",
+    "expression": "grel:if(row.record.cells.Title.length()>99,\"All lines not displayed; unique values found:\\n\" + row.record.cells.Language.value.uniques().join('\\n'),row.record.cells.Language.value.join('\\n'))",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column Language using expression grel:if(row.record.cells.Title.length()>99,\"All lines not displayed; unique values found:\\n\" + row.record.cells.Language.value.uniques().join('\\n'),row.record.cells.Language.value.join('\\n'))"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "record-based"
+    },
+    "columnName": "Country",
+    "expression": "grel:if(row.record.cells.Title.length()>99,\"All lines not displayed; unique values found:\\n\" + row.record.cells.Country.value.uniques().join('\\n'),row.record.cells.Country.value.join('\\n'))",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column Country using expression grel:if(row.record.cells.Title.length()>99,\"All lines not displayed; unique values found:\\n\" + row.record.cells.Country.value.uniques().join('\\n'),row.record.cells.Country.value.join('\\n'))"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "record-based"
+    },
+    "columnName": "Holding Libraries",
+    "expression": "grel:if(row.record.cells.Title.length()>99,if(row.record.cells['Holding Libraries'].value.uniques().length()>99,\"Too many unique values to display.\",\"All lines not displayed; unique values found:\\n\"+row.record.cells['Holding Libraries'].value.uniques().join('\\n')) ,row.record.cells['Holding Libraries'].value.join('\\n'))",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column Holding Libraries using expression grel:if(row.record.cells.Title.length()>99,if(row.record.cells['Holding Libraries'].value.uniques().length()>99,\"Too many unique values to display.\",\"All lines not displayed; unique values found:\\n\"+row.record.cells['Holding Libraries'].value.uniques().join('\\n')) ,row.record.cells['Holding Libraries'].value.join('\\n'))"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "record-based"
+    },
+    "columnName": "Field",
+    "expression": "grel:if(row.record.cells.Title.length()>99,\"All lines not displayed; unique values found:\\n\" + row.record.cells.Field.value.uniques().sort().join('\\n'),row.record.cells.Field.value.join('\\n'))",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column Field using expression grel:if(row.record.cells.Title.length()>99,\"All lines not displayed; unique values found:\\n\" + row.record.cells.Field.value.uniques().sort().join('\\n'),row.record.cells.Field.value.join('\\n'))"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "record-based"
+    },
+    "baseColumnName": "Language/area group",
+    "expression": "jython:from collections import Counter \nx = row.record.cells['Language/area group'].value \ncount = Counter(x) \nfreq_list = count.values() \nmax_cnt = max(freq_list) \ntotal = freq_list.count(max_cnt) \nmost_commons = count.most_common(total) \nreturn \"|\".join([elem[0] for elem in most_commons])",
+    "onError": "set-to-blank",
+    "newColumnName": "Triage",
+    "columnInsertIndex": 10,
+    "description": "Create column Triage at index 10 based on column Language/area group using expression jython:from collections import Counter \nx = row.record.cells['Language/area group'].value \ncount = Counter(x) \nfreq_list = count.values() \nmax_cnt = max(freq_list) \ntotal = freq_list.count(max_cnt) \nmost_commons = count.most_common(total) \nreturn \"|\".join([elem[0] for elem in most_commons])"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "record-based"
+    },
+    "columnName": "Triage",
+    "expression": "grel:if( and( value.split('|').length()==2, or(value.contains('Judaica'),value.contains('Middle East'),value.contains('Slavic'),value.contains('Greek'),value.contains('Korean')), or(value.contains('AARGH'),value.contains('Unassigned'),value.contains('Department')) ), filter(value.split('|'),v,inArray(['Judaica','Middle East','Slavic','Greek','Korean'],v)).join(''), value )",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column Triage using expression grel:if( and( value.split('|').length()==2, or(value.contains('Judaica'),value.contains('Middle East'),value.contains('Slavic'),value.contains('Greek'),value.contains('Korean')), or(value.contains('AARGH'),value.contains('Unassigned'),value.contains('Department')) ), filter(value.split('|'),v,inArray(['Judaica','Middle East','Slavic','Greek','Korean'],v)).join(''), value )"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "record-based"
+    },
+    "columnName": "Publication date",
+    "expression": "grel:if(row.record.cells.Title.length()>99,\"All lines not displayed; Publication date range: \\n\" + row.record.cells['Publication date'].value.uniques().sort()[0] + ' - ' + row.record.cells['Publication date'].value.uniques().sort()[-1],row.record.cells['Publication date'].value.join('\\n'))",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column Publication date using expression grel:if(row.record.cells.Title.length()>99,\"All lines not displayed; Publication date range: \\n\" + row.record.cells['Publication date'].value.uniques().sort()[0] + ' - ' + row.record.cells['Publication date'].value.uniques().sort()[-1],row.record.cells['Publication date'].value.join('\\n'))"
+  },
+  {
+    "op": "core/row-removal",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "AUTH Originating System ID",
+          "expression": "isBlank(value)",
+          "columnName": "AUTH Originating System ID",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": true,
+                "l": "true"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "description": "Remove rows"
+  }
