@@ -1,0 +1,132 @@
+  {
+    "op": "core/row-removal",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "Vocabulary",
+          "expression": "value",
+          "columnName": "Vocabulary",
+          "invert": true,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "LCNAMES",
+                "l": "LCNAMES"
+              }
+            },
+            {
+              "v": {
+                "v": "LCSH",
+                "l": "LCSH"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "description": "Remove rows"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "MMS ID",
+    "expression": "join ([coalesce(cells['MMS ID'].value,''),coalesce(cells['Field'].value,''),coalesce(cells['BIB Heading Before'].value,''),coalesce(cells['BIB Heading After'].value,'')],'')",
+    "onError": "keep-original",
+    "newColumnName": "Deduplication",
+    "columnInsertIndex": 3,
+    "description": "Create column Deduplication at index 3 based on column MMS ID using expression join ([coalesce(cells['MMS ID'].value,''),coalesce(cells['Field'].value,''),coalesce(cells['BIB Heading Before'].value,''),coalesce(cells['BIB Heading After'].value,'')],'')"
+  },
+  {
+    "op": "core/row-reorder",
+    "mode": "row-based",
+    "sorting": {
+      "criteria": [
+        {
+          "valueType": "string",
+          "column": "Deduplication",
+          "blankPosition": 2,
+          "errorPosition": 1,
+          "reverse": false,
+          "caseSensitive": false
+        }
+      ]
+    },
+    "description": "Reorder rows"
+  },
+  {
+    "op": "core/blank-down",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "Deduplication",
+    "description": "Blank down cells in column Deduplication"
+  },
+  {
+    "op": "core/row-removal",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "Deduplication",
+          "expression": "isBlank(value)",
+          "columnName": "Deduplication",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": true,
+                "l": "true"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "description": "Remove rows"
+  },
+  {
+    "op": "core/column-removal",
+    "columnName": "Deduplication",
+    "description": "Remove column Deduplication"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "BIB Heading Before",
+    "expression": "grel:value.replace(/880-\\d\\d\\s/,'')",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column BIB Heading Before using expression grel:value.replace(/880-\\d\\d\\s/,'')"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "BIB Heading After",
+    "expression": "grel:value.replace(/880-\\d\\d\\s/,'')",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column BIB Heading After using expression grel:value.replace(/880-\\d\\d\\s/,'')"
+  }
