@@ -1,0 +1,91 @@
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "LibraryCloud",
+    "expression": "grel:value.parseXml().select('mods|languageTerm[type=\"code\"]')[0].xmlText()",
+    "onError": "set-to-blank",
+    "newColumnName": "Language",
+    "columnInsertIndex": 6,
+    "description": "Create column Language at index 6 based on column LibraryCloud using expression grel:value.parseXml().select('mods|languageTerm[type=\"code\"]')[0].xmlText()"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "LibraryCloud",
+    "expression": "grel:value.parseXml().select('mods|placeTerm[type=\"code\"]')[0].xmlText()",
+    "onError": "set-to-blank",
+    "newColumnName": "Country",
+    "columnInsertIndex": 6,
+    "description": "Create column Country at index 6 based on column LibraryCloud using expression grel:value.parseXml().select('mods|placeTerm[type=\"code\"]')[0].xmlText()"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "LibraryCloud",
+    "expression": "grel:forEach(value.parseXml().select(\"librarycloud|HarvardRepository\"),v,v.xmlText()).join(\" | \")",
+    "onError": "set-to-blank",
+    "newColumnName": "Holding Libraries",
+    "columnInsertIndex": 6,
+    "description": "Create column Holding Libraries at index 6 based on column LibraryCloud using expression grel:forEach(value.parseXml().select(\"librarycloud|HarvardRepository\"),v,v.xmlText()).join(\" | \")"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "LibraryCloud",
+    "expression": "grel:value.parseXml().select('mods|subject[authority=\"lcsh\"]')[0].xmlText()",
+    "onError": "set-to-blank",
+    "newColumnName": "First Subject",
+    "columnInsertIndex": 6,
+    "description": "Create column First Subject at index 6 based on column LibraryCloud using expression grel:value.parseXml().select('mods|subject[authority=\"lcsh\"]')[0].xmlText()"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "LibraryCloud",
+    "expression": "grel:forEach(value.parseXml().select('mods|note[type=\"statement of responsibility\"]'),v,v.xmlText()).join(\" // \")",
+    "onError": "set-to-blank",
+    "newColumnName": "Statement of responsibility",
+    "columnInsertIndex": 6,
+    "description": "Create column Statement of responsibility at index 6 based on column LibraryCloud using expression grel:forEach(value.parseXml().select('mods|note[type=\"statement of responsibility\"]'),v,v.xmlText()).join(\" // \")"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "record-based"
+    },
+    "baseColumnName": "LibraryCloud",
+    "expression": "grel:value.parseXml().select('mods|dateIssued')[0].xmlText()",
+    "onError": "set-to-blank",
+    "newColumnName": "Publication date",
+    "columnInsertIndex": 6,
+    "description": "Create column Publication date at index 6 based on column LibraryCloud using expression grel:value.parseXml().select('mods|dateIssued')[0].xmlText()"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "Title",
+    "expression": "grel:forNonBlank(cells[\"Title\"].value,v,v,\"[no title] /\") + ' ' + forNonBlank(cells[\"Statement of responsibility\"].value,v,v,\"[no statement of responsibility]\") + ' | ' + cells['MMS ID'].value\"",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column Title using expression grel:forNonBlank(cells[\"Title\"].value,v,v,\"[no title] /\") + ' ' + forNonBlank(cells[\"Statement of responsibility\"].value,v,v,\"[no statement of responsibility]\") + ' | ' + cells['MMS ID'].value\""
+  }
