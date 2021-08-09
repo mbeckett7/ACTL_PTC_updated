@@ -1,3 +1,4 @@
+[
   {
     "op": "core/column-addition",
     "engineConfig": {
@@ -8,8 +9,8 @@
     "expression": "grel:length(value)",
     "onError": "set-to-blank",
     "newColumnName": "LengthCellsBefore",
-    "columnInsertIndex": 7,
-    "description": "Create column LengthCellsBefore at index 7 based on column BIB Heading Before using expression grel:length(value)"
+    "columnInsertIndex": 8,
+    "description": "Create column LengthCellsBefore at index 8 based on column BIB Heading Before using expression grel:length(value)"
   },
   {
     "op": "core/column-addition",
@@ -21,8 +22,8 @@
     "expression": "grel:length(value)",
     "onError": "set-to-blank",
     "newColumnName": "LengthCellsAfter",
-    "columnInsertIndex": 9,
-    "description": "Create column LengthCellsAfter at index 9 based on column BIB Heading After using expression grel:length(value)"
+    "columnInsertIndex": 10,
+    "description": "Create column LengthCellsAfter at index 10 based on column BIB Heading After using expression grel:length(value)"
   },
   {
     "op": "core/column-addition",
@@ -34,8 +35,8 @@
     "expression": "grel:sum(unicode(value))",
     "onError": "set-to-blank",
     "newColumnName": "SumUnicodeBefore",
-    "columnInsertIndex": 7,
-    "description": "Create column SumUnicodeBefore at index 7 based on column BIB Heading Before using expression grel:sum(unicode(value))"
+    "columnInsertIndex": 8,
+    "description": "Create column SumUnicodeBefore at index 8 based on column BIB Heading Before using expression grel:sum(unicode(value))"
   },
   {
     "op": "core/column-addition",
@@ -47,8 +48,8 @@
     "expression": "grel:sum(unicode(value))",
     "onError": "set-to-blank",
     "newColumnName": "SumUnicodeAfter",
-    "columnInsertIndex": 10,
-    "description": "Create column SumUnicodeAfter at index 10 based on column BIB Heading After using expression grel:sum(unicode(value))"
+    "columnInsertIndex": 11,
+    "description": "Create column SumUnicodeAfter at index 11 based on column BIB Heading After using expression grel:sum(unicode(value))"
   },
   {
     "op": "core/column-addition",
@@ -60,8 +61,8 @@
     "expression": "grel:length(\nngramFingerprint(value,2)\n)",
     "onError": "set-to-blank",
     "newColumnName": "LengthNGFBefore",
-    "columnInsertIndex": 9,
-    "description": "Create column LengthNGFBefore at index 9 based on column BIB Heading Before using expression grel:length(\nngramFingerprint(value,2)\n)"
+    "columnInsertIndex": 10,
+    "description": "Create column LengthNGFBefore at index 10 based on column BIB Heading Before using expression grel:length(\nngramFingerprint(value,2)\n)"
   },
   {
     "op": "core/column-addition",
@@ -73,8 +74,8 @@
     "expression": "grel:length(\nngramFingerprint(value,2)\n)",
     "onError": "set-to-blank",
     "newColumnName": "LengthNGFAfter",
-    "columnInsertIndex": 11,
-    "description": "Create column LengthNGFAfter at index 11 based on column BIB Heading After using expression grel:length(\nngramFingerprint(value,2)\n)"
+    "columnInsertIndex": 12,
+    "description": "Create column LengthNGFAfter at index 12 based on column BIB Heading After using expression grel:length(\nngramFingerprint(value,2)\n)"
   },
   {
     "op": "core/column-addition",
@@ -86,8 +87,8 @@
     "expression": "grel:round(cells[\"SumUnicodeBefore\"].value \n/\ncells[\"LengthCellsBefore\"].value)",
     "onError": "set-to-blank",
     "newColumnName": "RatioBefore",
-    "columnInsertIndex": 7,
-    "description": "Create column RatioBefore at index 7 based on column BIB Heading Before using expression grel:round(cells[\"SumUnicodeBefore\"].value \n/\ncells[\"LengthCellsBefore\"].value)"
+    "columnInsertIndex": 8,
+    "description": "Create column RatioBefore at index 8 based on column BIB Heading Before using expression grel:round(cells[\"SumUnicodeBefore\"].value \n/\ncells[\"LengthCellsBefore\"].value)"
   },
   {
     "op": "core/column-addition",
@@ -99,8 +100,8 @@
     "expression": "grel:round(cells[\"SumUnicodeAfter\"].value \n/\ncells[\"LengthCellsAfter\"].value)",
     "onError": "set-to-blank",
     "newColumnName": "RatioAfter",
-    "columnInsertIndex": 12,
-    "description": "Create column RatioAfter at index 12 based on column BIB Heading After using expression grel:round(cells[\"SumUnicodeAfter\"].value \n/\ncells[\"LengthCellsAfter\"].value)"
+    "columnInsertIndex": 13,
+    "description": "Create column RatioAfter at index 13 based on column BIB Heading After using expression grel:round(cells[\"SumUnicodeAfter\"].value \n/\ncells[\"LengthCellsAfter\"].value)"
   },
   {
     "op": "core/column-addition",
@@ -112,8 +113,8 @@
     "expression": "grel:or(\ncells[\"LengthNGFAfter\"].value - cells[\"LengthNGFBefore\"].value == 0,\nand(\ncells[\"LengthNGFAfter\"].value - cells[\"LengthNGFBefore\"].value == 2,\nor(\ncells[\"RatioAfter\"].value - cells[\"RatioBefore\"].value > 6,\ncells[\"RatioAfter\"].value - cells[\"RatioBefore\"].value < -12\n)\n),\nand(\ncells[\"LengthNGFAfter\"].value - cells[\"LengthNGFBefore\"].value == 4,\nor(\ncells[\"RatioAfter\"].value - cells[\"RatioBefore\"].value > 12,\ncells[\"RatioAfter\"].value - cells[\"RatioBefore\"].value < -50\n)\n),\nand(\ncells[\"LengthNGFAfter\"].value - cells[\"LengthNGFBefore\"].value == 6,\nor(\ncells[\"RatioAfter\"].value - cells[\"RatioBefore\"].value > 30,\ncells[\"RatioAfter\"].value - cells[\"RatioBefore\"].value < -50\n)\n),\nand(\ncells[\"LengthNGFAfter\"].value - cells[\"LengthNGFBefore\"].value == 8,\nor(\ncells[\"RatioAfter\"].value - cells[\"RatioBefore\"].value > 40,\ncells[\"RatioAfter\"].value - cells[\"RatioBefore\"].value < -99\n)\n)\n)",
     "onError": "set-to-blank",
     "newColumnName": "MinorChange?",
-    "columnInsertIndex": 6,
-    "description": "Create column MinorChange? at index 6 based on column Field using expression grel:or(\ncells[\"LengthNGFAfter\"].value - cells[\"LengthNGFBefore\"].value == 0,\nand(\ncells[\"LengthNGFAfter\"].value - cells[\"LengthNGFBefore\"].value == 2,\nor(\ncells[\"RatioAfter\"].value - cells[\"RatioBefore\"].value > 6,\ncells[\"RatioAfter\"].value - cells[\"RatioBefore\"].value < -12\n)\n),\nand(\ncells[\"LengthNGFAfter\"].value - cells[\"LengthNGFBefore\"].value == 4,\nor(\ncells[\"RatioAfter\"].value - cells[\"RatioBefore\"].value > 12,\ncells[\"RatioAfter\"].value - cells[\"RatioBefore\"].value < -50\n)\n),\nand(\ncells[\"LengthNGFAfter\"].value - cells[\"LengthNGFBefore\"].value == 6,\nor(\ncells[\"RatioAfter\"].value - cells[\"RatioBefore\"].value > 30,\ncells[\"RatioAfter\"].value - cells[\"RatioBefore\"].value < -50\n)\n),\nand(\ncells[\"LengthNGFAfter\"].value - cells[\"LengthNGFBefore\"].value == 8,\nor(\ncells[\"RatioAfter\"].value - cells[\"RatioBefore\"].value > 40,\ncells[\"RatioAfter\"].value - cells[\"RatioBefore\"].value < -99\n)\n)\n)"
+    "columnInsertIndex": 7,
+    "description": "Create column MinorChange? at index 7 based on column Field using expression grel:or(\ncells[\"LengthNGFAfter\"].value - cells[\"LengthNGFBefore\"].value == 0,\nand(\ncells[\"LengthNGFAfter\"].value - cells[\"LengthNGFBefore\"].value == 2,\nor(\ncells[\"RatioAfter\"].value - cells[\"RatioBefore\"].value > 6,\ncells[\"RatioAfter\"].value - cells[\"RatioBefore\"].value < -12\n)\n),\nand(\ncells[\"LengthNGFAfter\"].value - cells[\"LengthNGFBefore\"].value == 4,\nor(\ncells[\"RatioAfter\"].value - cells[\"RatioBefore\"].value > 12,\ncells[\"RatioAfter\"].value - cells[\"RatioBefore\"].value < -50\n)\n),\nand(\ncells[\"LengthNGFAfter\"].value - cells[\"LengthNGFBefore\"].value == 6,\nor(\ncells[\"RatioAfter\"].value - cells[\"RatioBefore\"].value > 30,\ncells[\"RatioAfter\"].value - cells[\"RatioBefore\"].value < -50\n)\n),\nand(\ncells[\"LengthNGFAfter\"].value - cells[\"LengthNGFBefore\"].value == 8,\nor(\ncells[\"RatioAfter\"].value - cells[\"RatioBefore\"].value > 40,\ncells[\"RatioAfter\"].value - cells[\"RatioBefore\"].value < -99\n)\n)\n)"
   },
   {
     "op": "core/column-addition",
@@ -125,8 +126,8 @@
     "expression": "grel:or( \nvalue.contains(\"(\"), \nvalue.contains(\")\"), \nisNotNull(\nvalue.match(/(.*)(\\d){4}(.*)/) \n) \n)",
     "onError": "set-to-blank",
     "newColumnName": "QualifiedBefore",
-    "columnInsertIndex": 8,
-    "description": "Create column QualifiedBefore at index 8 based on column BIB Heading Before using expression grel:or( \nvalue.contains(\"(\"), \nvalue.contains(\")\"), \nisNotNull(\nvalue.match(/(.*)(\\d){4}(.*)/) \n) \n)"
+    "columnInsertIndex": 9,
+    "description": "Create column QualifiedBefore at index 9 based on column BIB Heading Before using expression grel:or( \nvalue.contains(\"(\"), \nvalue.contains(\")\"), \nisNotNull(\nvalue.match(/(.*)(\\d){4}(.*)/) \n) \n)"
   },
   {
     "op": "core/column-addition",
@@ -138,6 +139,7 @@
     "expression": "grel:or(\nvalue.contains(\"(\"),\nvalue.contains(\")\"),\nisNotNull(\nvalue.match(/(.*)(\\d){4}(.*)/)))",
     "onError": "set-to-blank",
     "newColumnName": "QualifiedAfter",
-    "columnInsertIndex": 14,
-    "description": "Create column QualifiedAfter at index 14 based on column BIB Heading After using expression grel:or(\nvalue.contains(\"(\"),\nvalue.contains(\")\"),\nisNotNull(\nvalue.match(/(.*)(\\d){4}(.*)/)))"
+    "columnInsertIndex": 15,
+    "description": "Create column QualifiedAfter at index 15 based on column BIB Heading After using expression grel:or(\nvalue.contains(\"(\"),\nvalue.contains(\")\"),\nisNotNull(\nvalue.match(/(.*)(\\d){4}(.*)/)))"
   }
+]
