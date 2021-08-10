@@ -1,0 +1,80 @@
+[
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "BIB Heading After",
+    "expression": "grel:\"\"",
+    "onError": "set-to-blank",
+    "newColumnName": "Done?",
+    "columnInsertIndex": 6,
+    "description": "Create column Done? at index 6 based on column BIB Heading After using expression grel:\"\""
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "BIB Heading After",
+    "expression": "grel:\"\"",
+    "onError": "set-to-blank",
+    "newColumnName": "# bibs needed fixing?",
+    "columnInsertIndex": 6,
+    "description": "Create column # bibs needed fixing? at index 6 based on column BIB Heading After using expression grel:\"\""
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "BIB Heading After",
+    "expression": "grel:\"\"",
+    "onError": "set-to-blank",
+    "newColumnName": "AUTH already fixed?",
+    "columnInsertIndex": 6,
+    "description": "Create column AUTH already fixed? at index 6 based on column BIB Heading After using expression grel:\"\""
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "BIB Heading After",
+    "expression": "grel:\"\"",
+    "onError": "set-to-blank",
+    "newColumnName": "Needs NACO?",
+    "columnInsertIndex": 6,
+    "description": "Create column Needs NACO? at index 6 based on column BIB Heading After using expression grel:\"\""
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "BIB Heading After",
+    "expression": "grel:\"\"",
+    "onError": "set-to-blank",
+    "newColumnName": "Claimed by",
+    "columnInsertIndex": 6,
+    "description": "Create column Claimed by at index 6 based on column BIB Heading After using expression grel:\"\""
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "BIB Heading After",
+    "expression": "grel:\"\"",
+    "onError": "set-to-blank",
+    "newColumnName": "Notes",
+    "columnInsertIndex": 6,
+    "description": "Create column Notes at index 6 based on column BIB Heading After using expression grel:\"\""
+  }
+]
