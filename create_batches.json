@@ -1,0 +1,75 @@
+[
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "Triage",
+    "expression": "grel:if(and(inArray(['AARGH','Judaica','Middle East','Slavic','Greek','Korean'],cells.Triage.value), not(cells['BIB Heading Before'].value.startsWith('Initials:'))),\ncells.Triage.value + if(and(cells.HeadingType.value == \"X00\",cells.QualifiedAfter.value == false),\" - Personal name unqualified after flip\",\"\") + ' | ' + cells['Change Date'].value.substring(0,7),'Not processed'+ ' | ' + cells['Change Date'].value.substring(0,7))",
+    "onError": "set-to-blank",
+    "newColumnName": "Batch",
+    "columnInsertIndex": 20,
+    "description": "Create column Batch at index 20 based on column Triage using expression grel:if(and(inArray(['AARGH','Judaica','Middle East','Slavic','Greek','Korean'],cells.Triage.value), not(cells['BIB Heading Before'].value.startsWith('Initials:'))),\ncells.Triage.value + if(and(cells.HeadingType.value == \"X00\",cells.QualifiedAfter.value == false),\" - Personal name unqualified after flip\",\"\") + ' | ' + cells['Change Date'].value.substring(0,7),'Not processed'+ ' | ' + cells['Change Date'].value.substring(0,7))"
+  },
+  {
+    "op": "core/row-reorder",
+    "mode": "row-based",
+    "sorting": {
+      "criteria": [
+        {
+          "valueType": "string",
+          "column": "Vocabulary",
+          "blankPosition": 2,
+          "errorPosition": 1,
+          "reverse": false,
+          "caseSensitive": false
+        },
+        {
+          "valueType": "string",
+          "column": "HeadingType",
+          "blankPosition": 2,
+          "errorPosition": 1,
+          "reverse": false,
+          "caseSensitive": false
+        },
+        {
+          "valueType": "string",
+          "column": "BIB Heading Before",
+          "blankPosition": 2,
+          "errorPosition": 1,
+          "reverse": false,
+          "caseSensitive": false
+        }
+      ]
+    },
+    "description": "Reorder rows"
+  },
+  {
+    "op": "core/column-reorder",
+    "columnNames": [
+      "AUTH Originating System ID",
+      "Worldcat AUTH link",
+      "BIB Heading Before",
+      "BIB Heading After",
+      "670s on linked AUTH",
+      "Claimed by",
+      "Needs NACO?",
+      "AUTH already fixed?",
+      "# bibs needed fixing?",
+      "Done?",
+      "Title",
+      "Publication date",
+      "First Subject",
+      "Notes",
+      "Language",
+      "Country",
+      "Holding Libraries",
+      "Field",
+      "Vocabulary",
+      "HeadingType",
+      "Batch"
+    ],
+    "description": "Reorder columns"
+  }
+]
