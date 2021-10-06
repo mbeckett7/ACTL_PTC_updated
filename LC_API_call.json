@@ -6,7 +6,7 @@
       "mode": "row-based"
     },
     "baseColumnName": "AUTH Originating System ID",
-    "urlExpression": "grel:if(and(isNonBlank(value),value.contains(/[A-Za-z]/)),'https://id.loc.gov/authorities/names/' + value.replace(/\\s/,'') + '.rdf','')",
+    "urlExpression": "grel:if(and(isNonBlank(value),value.contains('n')),'https://id.loc.gov/authorities/names/' + value.replace(/\\s/,'') + '.rdf',if(and(isNonBlank(value),value.contains('sh')),'https://id.loc.gov/authorities/subjects/' + value.replace(/\\s/,'') + '.rdf',if(and(isNonBlank(value),value.contains('gf')),'https://id.loc.gov/authorities/genreForms/' + value.replace(/\\s/,'') + '.rdf',''))\n)",
     "onError": "store-error",
     "newColumnName": "LC API",
     "columnInsertIndex": 1,
@@ -26,6 +26,6 @@
         "value": "*/*"
       }
     ],
-    "description": "Create column LC API at index 1 by fetching URLs based on column AUTH Originating System ID using expression grel:if(and(isNonBlank(value),value.contains(/[A-Za-z]/)),'https://id.loc.gov/authorities/names/' + value.replace(/\\s/,'') + '.rdf','')"
+    "description": "Create column LC API at index 1 by fetching URLs based on column AUTH Originating System ID using expression grel:if(and(isNonBlank(value),value.contains('n')),'https://id.loc.gov/authorities/names/' + value.replace(/\\s/,'') + '.rdf',if(and(isNonBlank(value),value.contains('sh')),'https://id.loc.gov/authorities/subjects/' + value.replace(/\\s/,'') + '.rdf',if(and(isNonBlank(value),value.contains('gf')),'https://id.loc.gov/authorities/genreForms/' + value.replace(/\\s/,'') + '.rdf',''))\n)"
   }
 ]
