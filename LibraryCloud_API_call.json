@@ -1,0 +1,31 @@
+[
+  {
+    "op": "core/column-addition-by-fetching-urls",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "MMS ID",
+    "urlExpression": "grel:\"https://api.lib.harvard.edu/v2/items?recordIdentifier=\" + value",
+    "onError": "store-error",
+    "newColumnName": "LibraryCloud",
+    "columnInsertIndex": 3,
+    "delay": 2000,
+    "cacheResponses": true,
+    "httpHeadersJson": [
+      {
+        "name": "authorization",
+        "value": ""
+      },
+      {
+        "name": "user-agent",
+        "value": "OpenRefine 3.4.1 [437dc4d]"
+      },
+      {
+        "name": "accept",
+        "value": "*/*"
+      }
+    ],
+    "description": "Create column LibraryCloud at index 3 by fetching URLs based on column MMS ID using expression grel:\"https://api.lib.harvard.edu/v2/items?recordIdentifier=\" + value"
+  }
+]
