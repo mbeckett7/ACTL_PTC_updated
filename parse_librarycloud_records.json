@@ -1,3 +1,4 @@
+[
   {
     "op": "core/column-addition",
     "engineConfig": {
@@ -83,9 +84,10 @@
       "mode": "row-based"
     },
     "columnName": "Title",
-    "expression": "grel:forNonBlank(cells[\"Title\"].value,v,v,\"[no title] /\") + ' ' + forNonBlank(cells[\"Statement of responsibility\"].value,v,v,\"[no statement of responsibility]\") + ' | ' + cells['MMS ID'].value\"",
+    "expression": "grel:forNonBlank(cells[\"Title\"].value,v,v,\"[no title] /\") + ' ' + forNonBlank(cells[\"Statement of responsibility\"].value,v,v,\"[no statement of responsibility]\") + ' | ' + cells['MMS ID'].value",
     "onError": "keep-original",
     "repeat": false,
     "repeatCount": 10,
-    "description": "Text transform on cells in column Title using expression grel:forNonBlank(cells[\"Title\"].value,v,v,\"[no title] /\") + ' ' + forNonBlank(cells[\"Statement of responsibility\"].value,v,v,\"[no statement of responsibility]\") + ' | ' + cells['MMS ID'].value\""
+    "description": "Text transform on cells in column Title using expression grel:forNonBlank(cells[\"Title\"].value,v,v,\"[no title] /\") + ' ' + forNonBlank(cells[\"Statement of responsibility\"].value,v,v,\"[no statement of responsibility]\") + ' | ' + cells['MMS ID'].value"
   }
+]
