@@ -138,11 +138,11 @@
       "mode": "row-based"
     },
     "baseColumnName": "Field",
-    "expression": "grel:\"X\" + value.substring(1,3)\"",
+    "expression": "grel:\"X\" + value.substring(1,3)",
     "onError": "set-to-blank",
     "newColumnName": "HeadingType",
     "columnInsertIndex": 6,
-    "description": "Create column HeadingType at index 6 based on column Field using expression grel:\"X\" + value.substring(1,3)\""
+    "description": "Create column HeadingType at index 6 based on column Field using expression grel:\"X\" + value.substring(1,3)"
   },
   {
     "op": "core/text-transform",
