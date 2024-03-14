@@ -8,19 +8,6 @@
     "baseColumnName": "BIB Heading After",
     "expression": "grel:\"\"",
     "onError": "set-to-blank",
-    "newColumnName": "EDIBA?",
-    "columnInsertIndex": 6,
-    "description": "Create column EDIBA? at index 6 based on column BIB Heading After using expression grel:\"\""
-  },
-  {
-    "op": "core/column-addition",
-    "engineConfig": {
-      "facets": [],
-      "mode": "row-based"
-    },
-    "baseColumnName": "BIB Heading After",
-    "expression": "grel:\"\"",
-    "onError": "set-to-blank",
     "newColumnName": "Done?",
     "columnInsertIndex": 6,
     "description": "Create column Done? at index 6 based on column BIB Heading After using expression grel:\"\""
@@ -37,6 +24,32 @@
     "newColumnName": "# bibs needed fixing?",
     "columnInsertIndex": 6,
     "description": "Create column # bibs needed fixing? at index 6 based on column BIB Heading After using expression grel:\"\""
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "BIB Heading After",
+    "expression": "grel:\"\"",
+    "onError": "set-to-blank",
+    "newColumnName": "AUTH already fixed?",
+    "columnInsertIndex": 6,
+    "description": "Create column AUTH already fixed? at index 6 based on column BIB Heading After using expression grel:\"\""
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "BIB Heading After",
+    "expression": "grel:\"\"",
+    "onError": "set-to-blank",
+    "newColumnName": "Needs NACO?",
+    "columnInsertIndex": 6,
+    "description": "Create column Needs NACO? at index 6 based on column BIB Heading After using expression grel:\"\""
   },
   {
     "op": "core/column-addition",
