@@ -151,10 +151,10 @@
       "mode": "row-based"
     },
     "columnName": "Change Date",
-    "expression": "grel:value.toString().toDate('EEE MMM dd HH:mm:ss zzz yyyy').toString('yyyy-MM-dd')",
+    "expression": "grel:value.toDate().toString('yyyy-MM-dd')",
     "onError": "keep-original",
     "repeat": false,
     "repeatCount": 10,
-    "description": "Text transform on cells in column Change Date using expression grel:value.toString().toDate('EEE MMM dd HH:mm:ss zzz yyyy').toString('yyyy-MM-dd')"
+    "description": "Text transform on cells in column Change Date using expression grel:value.toDate().toString('yyyy-MM-dd')"
   }
 ]
