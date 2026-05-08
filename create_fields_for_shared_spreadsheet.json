@@ -34,9 +34,9 @@
     "baseColumnName": "BIB Heading After",
     "expression": "grel:\"\"",
     "onError": "set-to-blank",
-    "newColumnName": "# bibs needed fixing?",
+    "newColumnName": "# of headings corrected",
     "columnInsertIndex": 6,
-    "description": "Create column # bibs needed fixing? at index 6 based on column BIB Heading After using expression grel:\"\""
+    "description": "Create column # of headings corrected at index 6 based on column BIB Heading After using expression grel:\"\""
   },
   {
     "op": "core/column-addition",
